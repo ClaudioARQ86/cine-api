@@ -5,7 +5,7 @@ import { Pelicula } from '../pelicula/pelicula.js'
 const peliculaCollection = client.db('cine').collection('peliculas')
 
 // Configuración para agregar una pelicula dentro de la colección
-async function HandleInsertPlantaRequest(req, res) {
+async function HandleInsertPeliculaRequest(req, res) {
     let data = req.body
     let pelicula = Pelicula
 
@@ -36,7 +36,9 @@ async function HandleGetPeliculaRequest(req, res) {
         let oid = ObjectId.createFromHexString(id)
         await peliculaCollection.findOne({ _id: oid })
         .then((data) => {
-            if(data === null) return res.status(404).send(data)})
+            if(data === null) return res.status(404).send('Pelicula no encontrada')
+            return res.status(200).send(data)
+        })
         .catch ((e) => {return res.status(500).send({ code: e.code })})
     }catch(e){
         return res.status(400).send('Id mal formado')
@@ -50,7 +52,7 @@ async function HandleUpdatePeliculaRequest(req, res) {
 
     try{
         let oid = ObjectId.createFromHexString(id)
-        let query = {$set: {pelicula}}
+        let query = {$set: pelicula}
         await peliculaCollection.updateOne({ _id: oid }, query)
         .then((data) => {return res.status(200).send(data)})
         .catch ((e) => {return res.status(400).send({ code: e.code })})
@@ -72,6 +74,6 @@ async function HandleDeletePeliculaRequest(req, res) {
         return res.status(400).send('Id mal formado')
     }
 }
-S
-export { HandleInsertPlantaRequest, HandleGetPeliculasRequest, HandleGetPeliculaRequest, HandleUpdatePeliculaRequest, HandleDeletePeliculaRequest }
+
+export { HandleInsertPeliculaRequest, HandleGetPeliculasRequest, HandleGetPeliculaRequest, HandleUpdatePeliculaRequest, HandleDeletePeliculaRequest }
 

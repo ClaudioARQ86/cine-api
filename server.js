@@ -1,8 +1,9 @@
 import express, { urlencoded } from 'express'
 import cors from 'cors'
-import client from '.src/common/db.js'
-import routes from './src/pelicula/routes'
-
+import client from './src/common/db.js'
+import peliculaRoutes from './src/pelicula/routes.js'
+import actorRoutes from './src/actor/routes.js'
+    
 const PORT = 3000 || 4000
 const app = express()
 
@@ -12,7 +13,8 @@ app.use(cors())
 
 app.all('/', (req, res) => {return res.status(200).json({ message: 'Bienvenido al cine Iplacex' })})
 
-app.use('/api', routes)
+app.use('/api', peliculaRoutes)
+app.use('/api', actorRoutes)
 
 await client.connect()
 .then(() => {

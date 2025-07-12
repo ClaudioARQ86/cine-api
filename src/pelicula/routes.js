@@ -1,12 +1,12 @@
 import express from 'express'
-import controller from './controller'
+import controller from './controller.js'
 
-const routes = express.routes ()
+const routes = express.Router()
 
-routes.post('/pelicula', controller.handleInsertPlantaRequest)
-routes.get('/pelicula', controller.handleGetPlantasRequest)
-routes.get('/pelicula/:id', controller.handleGetPlantaRequest)
-routes.put('/pelicula', controller.handleUpdatePlantaRequest)
-routes.delete('/pelicula/:id', controller.handleDeletePlantaRequest)
+routes.post('/pelicula', controller.HandleInsertPeliculaRequest)
+routes.get('/pelicula', controller.HandleGetPeliculasRequest)
+routes.get('/pelicula/:id', controller.HandleGetPeliculaRequest)
+routes.put('/pelicula/:id', controller.HandleUpdatePeliculaRequest)
+routes.delete('/pelicula/:id', controller.HandleDeletePeliculaRequest)
 
 export default routes
