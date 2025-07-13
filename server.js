@@ -3,7 +3,7 @@ import cors from 'cors'
 import client from './src/common/db.js'
 import peliculaRoutes from './src/pelicula/routes.js'
 import actorRoutes from './src/actor/routes.js'
-    
+
 const PORT = 3000 || 4000
 const app = express()
 
@@ -24,6 +24,3 @@ await client.connect()
 .catch(() => {
     console.log('Ha ocurrido un error al conectar al cluster de Atlas')
 })
-
-
-

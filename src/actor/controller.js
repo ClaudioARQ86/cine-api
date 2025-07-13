@@ -1,17 +1,21 @@
 import { ObjectId } from "mongodb";
 import client from "../common/db.js";
-import { Actor } from "../actor/actor.js";
+import { Actor } from "./actor.js";
 
-const actorCollection = client.db('cine').collection('actores')
+const actorCollection = client.db('cine-db').collection('actores')
 
 // Configuración para agregar un actor dentro de la colección
 async function HandleInsertActorRequest(req, res) {
     let data = req.body;
-    let actor = Actor;
-
-    actor.nombre = data.nombre;
-    actor.apellido = data.apellido;
-    actor.fechaNacimiento = data.fechaNacimiento;
+    
+    // Crear un nuevo objeto actor con los datos recibidos
+    let actor = {
+        idPelicula: data.idPelicula,
+        nombre: data.nombre,
+        edad: data.edad,
+        estaRetirado: data.estaRetirado,
+        premios: data.premios
+    };
 
     await actorCollection.insertOne(actor)
         .then((data) => {
@@ -47,11 +51,10 @@ async function HandleGetActorByIdRequest(req, res) {
 
 // Configuración para obtener todos los actores de una pelicula
 async function HandleGetActorsByPeliculaRequest(req, res) {
-    let peliculaId = req.params.peliculaId;
+    let idPelicula = req.params.idPelicula;
 
     try {
-        let oid = ObjectId.createFromHexString(peliculaId);
-        await actorCollection.find({ peliculas: oid }).toArray()
+        await actorCollection.find({ idPelicula: idPelicula }).toArray()
         .then((data) => { return res.status(200).send(data) })
         .catch((e) => { return res.status(500).send({ error: e }) });
     } catch (e) {

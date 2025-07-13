@@ -1,8 +1,8 @@
 import { ObjectId } from 'mongodb';
 import client from '../common/db.js';
-import { Pelicula } from '../pelicula/pelicula.js'
+import { Pelicula } from './pelicula.js'
 
-const peliculaCollection = client.db('cine').collection('peliculas')
+const peliculaCollection = client.db('cine-db').collection('peliculas')
 
 // Configuración para agregar una pelicula dentro de la colección
 async function HandleInsertPeliculaRequest(req, res) {
