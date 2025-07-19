@@ -1,7 +1,7 @@
-# Cine API - Evaluación Unidad 3
+# API REST Express para administración de películas favoritas de empleados de IPLACEX
 
 ## Descripción
-API REST para administración de películas favoritas de trabajadores y colaboradores en Iplacex. Desarrollada con Node.js, Express y MongoDB.
+API REST desarrollada con Node.js, Express y MongoDB para la administración de películas favoritas de trabajadores y colaboradores en Iplacex.
 
 ## Tecnologías Utilizadas
 - **JavaScript**: Lenguaje de programación principal
@@ -12,7 +12,7 @@ API REST para administración de películas favoritas de trabajadores y colabora
 
 ## Estructura del Proyecto
 ```
-cine-api/
+iplacex-cine-api-claudio_reyes/
 ├── src/
 │   ├── common/
 │   │   └── db.js              # Configuración de MongoDB
@@ -43,19 +43,19 @@ npm start
 
 ### Películas
 - `POST /api/pelicula` - Crear nueva película
-- `GET /api/pelicula` - Obtener todas las películas
+- `GET /api/peliculas` - Obtener todas las películas
 - `GET /api/pelicula/:id` - Obtener película por ID
 - `PUT /api/pelicula/:id` - Actualizar película
 - `DELETE /api/pelicula/:id` - Eliminar película
 
 ### Actores
 - `POST /api/actor` - Crear nuevo actor
-- `GET /api/actor` - Obtener todos los actores
+- `GET /api/actores` - Obtener todos los actores
 - `GET /api/actor/:id` - Obtener actor por ID
-- `GET /api/actor/pelicula/:peliculaId` - Obtener actores de una película
+- `GET /api/actores/pelicula/:idPelicula` - Obtener actores de una película
 
 ## Autor
 Iplacex - Claudio Reyes Quiroga
 
 ## Licencia
-Apache-1.0
+Apache-2.0

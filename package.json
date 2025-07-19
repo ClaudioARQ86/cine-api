@@ -1,8 +1,8 @@
 {
-  "name": "cine-api",
+  "name": "iplacex-cine-api-claudio_reyes",
   "version": "1.0.0",
-  "description": "API REST para administración de peliculas favortias de trabajadores y colaboradores en Iplacex",
-  "license": "Apache-1.0",
+  "description": "API REST Express para administración de películas favoritas de empleados de IPLACEX",
+  "license": "Apache-2.0",
   "author": "Iplacex - Claudio Reyes Quiroga",
   "main": "server.js",
   "type": "module",
